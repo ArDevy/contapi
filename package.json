@@ -1,0 +1,25 @@
+{
+  "name": "contabo-api-wrapper",
+  "version": "1.0.0",
+  "description": "Contabo API Wrapper",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArDevy/contabo.git"
+  },
+  "author": "ArDevyy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArDevy/contabo/issues"
+  },
+  "homepage": "https://github.com/ArDevy/contabo#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.3",
+    "utf8": "^3.0.0",
+    "uuid": "^8.3.2"
+  }
+}
