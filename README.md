@@ -65,4 +65,4 @@ const clientAuth = await client.auth()
 console.log(clientAuth)
 ```
 
-This is automatically done as soon as you initiate the client, but if you want your auth key and other stuff I thought I would just throw this in there.
+This is automatically done as soon as you initiate the client, but if you want your auth key and other stuff I thought I would just throw this in there. 
