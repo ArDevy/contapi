@@ -3,7 +3,7 @@
 
 ### Initiate
 ```javascript
-const Contabo = require('contabo-api-wrapper')
+const Contabo = require('contapi')
 const client = new Contabo({
     apiUsername: 'email@email.com',
     apiPassword: 'exmple',
