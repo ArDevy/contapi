@@ -1,5 +1,5 @@
 {
-  "name": "contabo-wrapper",
+  "name": "contapi",
   "version": "1.0.0",
   "description": "Contabo API Wrapper",
   "main": "src/index.js",
