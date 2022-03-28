@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+const fetch = require('node-fetch')
 const { v4 } = require('uuid');
 const uuidv4 = v4;
 const { apiInstance, apiInstances } = require('./utility/utility.js')
