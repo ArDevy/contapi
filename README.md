@@ -1,8 +1,6 @@
 
 ## Usage/Examples
 
-###### Below is some examples for using this package
-
 ### Initiate
 ```javascript
 const Contabo = require('contabo-api-wrapper')
@@ -48,7 +46,7 @@ instance.restart()
 
 ```
 
-When restarting the instance it will return the action back if you await it but it isn't required as the return value is quite useless
+When restarting the instance it will return the action back if you await it but it isn't required as the return value is quite useless, you can get instance ids with the getInstances method!
 
 ### Get an instances status by id
 ```javascript
