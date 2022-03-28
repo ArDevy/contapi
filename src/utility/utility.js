@@ -1,9 +1,10 @@
-import fetch from 'node-fetch'
-import { v4 as uuidv4 } from 'uuid';
+const fetch = require('node-fetch')
+const { v4 } = require('uuid');
+const uuidv4 = v4;
 
 async function par(name) { throw new Error(`"${name}" is a required value`) }
 
-export async function apiInstance(instanceId = par('instanceId'), authKey = par('authKey')) {
+async function apiInstance(instanceId = par('instanceId'), authKey = par('authKey')) {
     if(typeof authKey !== 'string' || typeof instanceId !== 'string') throw new Error('authKey, and the instanceId all much be strings')
     const response = await fetch(`https://api.contabo.com/v1/compute/instances/${instanceId}`, {
         method: 'GET',
@@ -16,7 +17,7 @@ export async function apiInstance(instanceId = par('instanceId'), authKey = par(
     return response.json()
 }
 
-export async function apiInstances(authKey = par('authKey')) {
+async function apiInstances(authKey = par('authKey')) {
     if(typeof authKey !== 'string') throw new Error('authKey must be a string')
     const response = await fetch(`https://api.contabo.com/v1/compute/instances`, {
         method: 'GET',
@@ -29,7 +30,7 @@ export async function apiInstances(authKey = par('authKey')) {
     return response.json()
 }
 
-export async function apiInstanceAction(authKey = par('authKey'), instanceId = par('instanceId'), action = par('action')) {
+async function apiInstanceAction(authKey = par('authKey'), instanceId = par('instanceId'), action = par('action')) {
     if(typeof authKey !== 'string' || typeof instanceId !== 'string' || typeof action !== 'string') throw new Error('authKey, instanceId, and action all much be strings')
     const response = await fetch(`https://api.contabo.com/v1/compute/instances/${instanceId}/actions/${action}`, {
         method: 'POST',
@@ -42,7 +43,7 @@ export async function apiInstanceAction(authKey = par('authKey'), instanceId = p
     return response.json()
 }
 
-export async function apiInstanceSnapshot(authKey = par('authKey'), name = par('name'), description = 'none', instanceId = par('instanceId')) {
+async function apiInstanceSnapshot(authKey = par('authKey'), name = par('name'), description = 'none', instanceId = par('instanceId')) {
     if(typeof name !== 'string' || typeof description !== 'string') throw new Error('name, authKey, and or description provided must be a string')
     const response = await fetch(`https://api.contabo.com/v1/compute/instances/${instanceId}/snapshots`, {
         method: 'POST',
@@ -59,7 +60,7 @@ export async function apiInstanceSnapshot(authKey = par('authKey'), name = par('
     return response.json()
 }
 
-export async function apiInstanceSnapshots(authKey = par('authKey'), instanceId) {
+async function apiInstanceSnapshots(authKey = par('authKey'), instanceId) {
     const response = await fetch(`https://api.contabo.com/v1/compute/instances/${instanceId}/snapshots`, {
         method: 'GET',
         headers: {
@@ -71,7 +72,7 @@ export async function apiInstanceSnapshots(authKey = par('authKey'), instanceId)
     return response.json()
 }
 
-export async function apiSnapshotAction(authKey = par('authKey'), snapshotId = par('snapshotId'), instanceId = par('instanceId'), action = par('action'), options) {
+async function apiSnapshotAction(authKey = par('authKey'), snapshotId = par('snapshotId'), instanceId = par('instanceId'), action = par('action'), options) {
     if(typeof authKey !== 'string' || typeof action !== 'string' || typeof snapshotId !== 'string') throw new Error('authkey, snapshotId and action provided must be a string')
     const response = await fetch(`https://api.contabo.com/v1/compute/instances/${instanceId}/snapshots/${snapshotId}`, {
         method: action.toUpperCase(),
@@ -84,3 +85,4 @@ export async function apiSnapshotAction(authKey = par('authKey'), snapshotId = p
     });
     return response.json()
 }
+module.exports = { apiInstance, apiInstanceAction, apiInstanceSnapshot, apiInstanceSnapshots, apiInstances, apiSnapshotAction }

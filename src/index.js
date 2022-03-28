@@ -1,9 +1,10 @@
 import fetch from 'node-fetch'
-import { v4 as uuidv4 } from 'uuid';
-import { apiInstance, apiInstances } from './utility/utility.js'
-import { InstanceStructure } from './structures/instance.js'
-import utf8 from 'utf8';
-export class ContaboAPI {
+const { v4 } = require('uuid');
+const uuidv4 = v4;
+const { apiInstance, apiInstances } = require('./utility/utility.js')
+const { InstanceStructure } = require('./structures/instance.js')
+const utf8 = require('utf8');
+module.exports = class ContaboAPI {
     constructor({ clientId, clientSecret, apiUsername, apiPassword }) {
         if (!clientId || !clientSecret || !apiUsername || !apiPassword) throw new Error(`Please provide a clientId, clientSecret, apiUsername, and a apiPassword.`)
         this.clientId = clientId

@@ -1,6 +1,6 @@
-import { apiInstance, apiInstanceAction, apiInstanceSnapshot, apiInstanceSnapshots } from '../utility/utility.js'
-import { SnapshotStructure } from './snapshot.js'
-export class InstanceStructure {
+const { apiInstance, apiInstanceAction, apiInstanceSnapshot, apiInstanceSnapshots } = require('../utility/utility.js')
+const { SnapshotStructure } = require('./snapshot.js')
+module.exports = class InstanceStructure {
     constructor(rawInstanceData, authKey) {
         if(!rawInstanceData) return {}
         for (let key in rawInstanceData) {
