@@ -3,7 +3,6 @@
   "version": "1.0.3",
   "description": "Contabo API Wrapper",
   "main": "src/index.js",
-  "type": "module",
   "keywords": [
     "contabo",
     "contabo-api",
