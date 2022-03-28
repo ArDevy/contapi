@@ -4,6 +4,7 @@
   "description": "Contabo API Wrapper",
   "main": "src/index.js",
   "type": "module",
+  "keywords": ["contabo", "contabo-api", "contabo-api-wrapper", "api"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
