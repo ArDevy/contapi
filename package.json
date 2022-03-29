@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ArDevy/contabo.git"
+    "url": "git+https://github.com/ArDevy/contapi.git"
   },
   "author": "ArDevyy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ArDevy/contabo/issues"
+    "url": "https://github.com/ArDevy/contapi/issues"
   },
-  "homepage": "https://github.com/ArDevy/contabo#readme",
+  "homepage": "https://github.com/ArDevy/contapi#readme",
   "dependencies": {
     "node-fetch": "^2.6.1",
     "utf8": "^3.0.0",
