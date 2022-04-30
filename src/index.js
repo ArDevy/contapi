@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 const { v4 } = require('uuid');
 const uuidv4 = v4;
 const { apiInstance, apiInstances } = require('./utility/utility.js')
-const { InstanceStructure } = require('./structures/instance.js')
+const InstanceStructure = require('./structures/instance.js')
 const utf8 = require('utf8');
 module.exports = class ContaboAPI {
     constructor({ clientId, clientSecret, apiUsername, apiPassword }) {
