@@ -6,14 +6,14 @@ module.exports = class InstanceStructure {
         for (let key in rawInstanceData) {
             this[key] = rawInstanceData[key];
         }
-        this.instances = null
+        this.snapshots = null
         this.authKey = authKey
-        this.initInstances.bind(this)()
+        this.initSnapshots.bind(this)()
     }
-    async initInstances() {
+    async initSnapshots() {
         const instanceSnapshots = await apiInstanceSnapshots(this.authKey, this.instanceId)
         if(instanceSnapshots.statusCode) throw new Error(instanceSnapshots.message)
-        this.instances = instanceSnapshots.data.map(i => {
+        this.snapshots = instanceSnapshots.data.map(i => {
             return new SnapshotStructure(i, this.authKey)
         })
     }

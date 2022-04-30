@@ -43,8 +43,6 @@ module.exports = class ContaboAPI {
         return instances.data.map(i => {
             return new InstanceStructure(i, this.authKey)
         })
-
-        
     }
     async getInstanceStatus(instanceId) {
         if (!this.authKey) throw new Error('No auth key found, please use the auth method!')
