@@ -1,14 +1,24 @@
 
+# contabo-api-wrapper
+
+An unnoficial api wrapper for the contabo api. Info on how to use is below
+
 ## Usage/Examples
+
+###### Below is some examples for using this package
 
 ### Initiate
 ```javascript
-const Contabo = require('contapi')
+const Contabo = require('contabo-api-wrapper')
 const client = new Contabo({
     apiUsername: 'email@email.com',
     apiPassword: 'exmple',
     clientId: '',
     clientSecret: ''
+})
+
+client.on('ready', () => {
+    console.log('Instances cached, and client is authed!')
 })
 ```
 
@@ -46,7 +56,7 @@ instance.restart()
 
 ```
 
-When restarting the instance it will return the action back if you await it but it isn't required as the return value is quite useless, you can get instance ids with the getInstances method!
+When restarting the instance it will return the action back if you await it but it isn't required as the return value is quite useless
 
 ### Get an instances status by id
 ```javascript
@@ -63,4 +73,10 @@ const clientAuth = await client.auth()
 console.log(clientAuth)
 ```
 
-This is automatically done as soon as you initiate the client, but if you want your auth key and other stuff I thought I would just throw this in there. 
+This is automatically done as soon as you initiate the client, but if you want your auth key and other stuff I thought I would just throw this in there.
+## Contributing
+
+Contributions are always welcome!
+
+See the [github](https://github.com/ArDevy/contabo) to begin contributing.
+
