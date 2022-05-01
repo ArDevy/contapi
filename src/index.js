@@ -34,7 +34,7 @@ module.exports = class ContaboAPI extends EventEmitter {
             return
         }
         const instances = await this.getInstances.bind(this)()
-        instances.map(instance => this.instances.set(instance.name, instance))
+        instances.map(instance => this.instances.set(instance.instanceId, instance))
         this.emit('instancesCached', this.instances);
     }
 

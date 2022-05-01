@@ -24,15 +24,15 @@ client.on('ready', () => {
 
 You can find all this information in the API Section of the [CCP](https://my.contabo.com/api/details)
 
-### Using cache to get by name and stop a instance
+### Using cache to get by instanceId and stop a instance
 ```javascript
-const instance = client.instances.get('vmiXXXXXX')
+const instance = client.instances.get('xxxxxxxx')
 instance.stop()
 ```
 
-### Using cache to get by instanceId and stop a instance
+### Using cache to get by name and stop a instance
 ```javascript
-const instance = client.instances.find(instance => instance.instanceId == 'xxxxxxx')
+const instance = client.instances.find(instance => instance.name == 'vmiXXXXXXX')
 instance.stop()
 ```
 
