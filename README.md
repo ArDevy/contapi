@@ -1,5 +1,5 @@
 
-# contabo-api-wrapper
+# contapi
 
 An unnoficial api wrapper for the contabo api. Info on how to use is below
 
@@ -9,7 +9,7 @@ An unnoficial api wrapper for the contabo api. Info on how to use is below
 
 ### Initiate
 ```javascript
-const Contabo = require('contabo-api-wrapper')
+const Contabo = require('contapi')
 const client = new Contabo({
     apiUsername: 'email@email.com',
     apiPassword: 'exmple',
