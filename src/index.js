@@ -28,7 +28,6 @@ module.exports = class ContaboAPI extends EventEmitter {
     async cacheInstances() {
         if(!this.authKey) {
             //No AuthKey, try again in 3000ms (3s)
-            console.log('huh')
             setTimeout(() => {
                 this.cacheInstances.bind(this)()
             }, 3000);
