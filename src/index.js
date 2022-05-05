@@ -3,6 +3,7 @@ const { v4 } = require('uuid');
 const uuidv4 = v4;
 const { EventEmitter } = require('events');
 const { apiInstance, apiInstances, apiInstanceSnapshot } = require('./utility/utility.js')
+const CacheCollection = require('./structures/cacheCollection.js')
 const InstanceStructure = require('./structures/instance.js')
 const utf8 = require('utf8');
 module.exports = class ContaboAPI extends EventEmitter {
@@ -13,7 +14,7 @@ module.exports = class ContaboAPI extends EventEmitter {
         this.clientSecret = clientSecret
         this.apiUsername = encodeURIComponent(apiUsername)
         this.apiPassword = encodeURIComponent(apiPassword)
-        this.instances = new Map();
+        this.instances = new CacheCollection();
         this.authKey = null
         this.authed = false;
         this.instancesCached = false;
@@ -57,7 +58,7 @@ module.exports = class ContaboAPI extends EventEmitter {
         if (!this.authKey) throw new Error('No auth key found, please use the auth method!')
         const instance = await apiInstance(instanceId, this.authKey)
         if (instance.statusCode) throw new Error(`${instance.statusCode} - ${instance.message}`)
-        const structure = new InstanceStructure(instance.data[0], this.authKey)
+        const structure = new InstanceStructure(instance.data[0], this)
         return structure
     }
     async getInstances() {
@@ -65,7 +66,7 @@ module.exports = class ContaboAPI extends EventEmitter {
         const instances = await apiInstances(this.authKey)
         if (instances.statusCode) throw new Error(`${instances.statusCode} - ${instances.message}`)
         return instances.data.map(i => {
-            return new InstanceStructure(i, this.authKey)
+            return new InstanceStructure(i, this)
         })
     }
     async getInstanceStatus(instanceId) {
