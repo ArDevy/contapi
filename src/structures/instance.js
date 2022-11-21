@@ -1,6 +1,5 @@
 const { apiInstance, apiInstanceAction, apiInstanceSnapshot, apiInstanceSnapshots } = require('../utility/utility.js')
 const SnapshotStructure = require('./snapshot.js')
-const CacheCollection = require('./structures/cacheCollection.js')
 module.exports = class InstanceStructure {
     constructor(rawInstanceData, authClient) {
         if(!rawInstanceData) return {}
