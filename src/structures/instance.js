@@ -1,4 +1,4 @@
-const { apiInstance, apiInstanceAction, apiInstanceSnapshot, apiInstanceSnapshots } = require('../utility/utility.js')
+const { apiInstanceAction, apiInstanceSnapshot, apiInstanceSnapshots } = require('../utility/utility.js')
 const SnapshotStructure = require('./snapshot.js')
 module.exports = class InstanceStructure {
     constructor(rawInstanceData, authClient) {
