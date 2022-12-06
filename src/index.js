@@ -1,11 +1,10 @@
-const fetch = require('node-fetch')
-const { v4 } = require('uuid');
-const uuidv4 = v4;
-const { EventEmitter } = require('events');
-const { apiInstance, apiInstances, apiInstanceSnapshot } = require('./utility/utility.js')
-const CacheCollection = require('./structures/cacheCollection.js')
-const InstanceStructure = require('./structures/instance.js')
-const utf8 = require('utf8');
+const fetch = require('node-fetch');
+const { v4: uuidv4 } = require('uuid');
+const { EventEmitter } = require('node:events');
+const { apiInstance, apiInstances } = require('./utility/utility.js');
+const CacheCollection = require('./structures/cacheCollection.js');
+const InstanceStructure = require('./structures/instance.js');
+
 module.exports = class ContaboAPI extends EventEmitter {
     constructor({ clientId, clientSecret, apiUsername, apiPassword }) {
         super();
@@ -20,8 +19,8 @@ module.exports = class ContaboAPI extends EventEmitter {
         this.instancesCached = false;
         this.auth.bind(this)()
         this.cacheInstances.bind(this)()
-        this.on('instancesCached', () => { this.instancesCached = true; if(this.authed && this.instancesCached) this.emit('ready', this) })
-        this.on('clientAuthed', () => { this.authed = true; if(this.authed && this.instancesCached) this.emit('ready', this) })
+        this.once('instancesCached', () => { this.instancesCached = true; if(this.authed && this.instancesCached) this.emit('ready', this) })
+        this.once('clientAuthed', () => { this.authed = true; if(this.authed && this.instancesCached) this.emit('ready', this) })
         setInterval(this.auth.bind(this), 285000)
         setInterval(this.cacheInstances.bind(this), 280000)
     }
