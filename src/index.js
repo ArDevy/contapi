@@ -47,8 +47,18 @@ module.exports = class ContaboAPI extends EventEmitter {
             },
             body: `client_id=${this.clientId}&client_secret=${this.clientSecret}&grant_type=password&username=${this.apiUsername}&password=${this.apiPassword}`
         });
+        if(response.status !== 200) {
+            const errMessage = `Failed to auth with Contabo API. HTTP Status Code: ${response.status} - ${response.statusText}`
+            this.emit('error', new Error(errMessage))
+            throw new Error(errMessage)
+        }
+
         const r = await response.json()
-        if(r.statusCode) throw new Error(r.message)
+        if(r.statusCode) {
+            const errMessage = `Failed to auth with Contabo API. API Status Code: ${r.statusCode} - ${r.message}`
+            this.emit('error', new Error(errMessage))
+            throw new Error(r.message)
+        }
         this.authKey = r.access_token
         this.emit('clientAuthed')
         return r
