@@ -6,7 +6,7 @@ const CacheCollection = require('./structures/cacheCollection.js');
 const InstanceStructure = require('./structures/instance.js');
 
 module.exports = class ContaboAPI extends EventEmitter {
-    constructor({ clientId, clientSecret, apiUsername, apiPassword, autoUpdateEnabled = true }) {
+    constructor({ clientId, clientSecret, apiUsername, apiPassword, autoReAuth = true }) {
         super();
         if (!clientId || !clientSecret || !apiUsername || !apiPassword) throw new Error(`Please provide a clientId, clientSecret, apiUsername, and a apiPassword.`)
         this.clientId = clientId
@@ -17,8 +17,8 @@ module.exports = class ContaboAPI extends EventEmitter {
         this.authKey = null
         this.authed = false;
         this.instancesCached = false;
-        this.autoUpdateEnabled = autoUpdateEnabled; // default is true to keep it backward compatible
-        if(this.autoUpdateEnabled) {
+        this.autoReAuth = autoReAuth; // default is true to keep it backward compatible
+        if(this.autoReAuth) {
             this.auth.bind(this)()
             this.cacheInstances.bind(this)()
             this.once('instancesCached', () => { this.instancesCached = true; if(this.authed && this.instancesCached) this.emit('ready', this) })
@@ -30,7 +30,7 @@ module.exports = class ContaboAPI extends EventEmitter {
 
     async cacheInstances() {
         if(!this.authKey) {
-            if(!this.autoUpdateEnabled) {
+            if(!this.autoReAuth) {
                 throw new Error('No auth key found, please use the auth method!')
             }
             //No AuthKey, try again in 3000ms (3s)

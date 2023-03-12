@@ -14,7 +14,8 @@ const client = new Contabo({
     apiUsername: 'email@email.com',
     apiPassword: 'exmple',
     clientId: '',
-    clientSecret: ''
+    clientSecret: '',
+    autoReAuth: true //Set the client to automatically re auth every 285 seconds, or let you manually auth the client with .auth(). Keep in mind, contabo api authorization expires about every 290 seconds. It is reccomended to keep active
 })
 
 client.on('ready', () => {
